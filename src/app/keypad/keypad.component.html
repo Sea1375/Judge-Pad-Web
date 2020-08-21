@@ -1,0 +1,18 @@
+<div class="card bg-light text-dark">
+    <div class="card-body">
+        <input type="input" class="form-control" value="{{ score }}">
+        <div class="row mt-3 text-center">
+            <div class="col-4 my-2" *ngFor="let key of keys" >
+                <button type="button" class="btn btn-primary number btn-circle" (click)="addKey(key.key)">{{ key.keyString }}</button>
+            </div>
+        </div>
+        <div class="row mt-5 text-center">
+            <div class="col-6">
+                <button type="button" class="btn btn-warning" (click)="clear()">Clear</button>
+            </div>
+            <div class="col-6">
+                <button type="button" class="btn btn-success" (click)="submit()">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>

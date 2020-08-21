@@ -1,0 +1,14 @@
+<div class='container'>
+    <div class='mt-5'>
+        <h1 class='bg-success text-white p-1 text-center'>Welcome to Judge Pad</h1>
+    </div>
+    <div class='card bg-light text-dark'>
+        <div class='card-body text-center'>
+            <h3 class='text-black-50'>Which judge are you?</h3>
+            <input type='password' class='form-control password' placeholder='Enter your password' />
+        </div>
+        <div class='list-group m-1'>
+            <a routerLink = '/score/{{ judge.id }}' *ngFor='let judge of judges' class="list-group-item list-group-item-action">{{ judge.name }}</a>
+        </div>
+    </div>
+</div>
