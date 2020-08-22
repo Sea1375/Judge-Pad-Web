@@ -8,9 +8,9 @@ describe('FinalScoreComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FinalScoreComponent ]
+      declarations: [FinalScoreComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

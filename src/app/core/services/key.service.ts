@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 
-import { KeyModel} from '../models/key-model';
+import { KeyModel } from '../models/key-model';
 import { KEYS } from '../mock/mock-keys';
 
 @Injectable({
@@ -9,7 +9,8 @@ import { KEYS } from '../mock/mock-keys';
 })
 export class KeyService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getKeys(): Observable<KeyModel[]> {
     return of(KEYS);
@@ -18,5 +19,5 @@ export class KeyService {
   getKey(keyId: Number): Observable<KeyModel> {
     return of(KEYS.find(key => key.id === keyId));
   }
-  
+
 }

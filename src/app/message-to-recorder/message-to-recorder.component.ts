@@ -9,7 +9,8 @@ export class MessageToRecorderComponent implements OnInit {
 
   message: String;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
   }
@@ -19,7 +20,7 @@ export class MessageToRecorderComponent implements OnInit {
   }
 
   submit(): void {
-    
+
   }
 
 }

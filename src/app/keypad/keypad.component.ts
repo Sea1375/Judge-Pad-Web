@@ -15,7 +15,8 @@ export class KeypadComponent implements OnInit {
 
   constructor(
     private keyService: KeyService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.getKeys();
@@ -25,9 +26,9 @@ export class KeypadComponent implements OnInit {
   getKeys(): void {
     this.keyService.getKeys().subscribe(keys => this.keys = keys);
   }
-  
+
   addKey(key: Number): void {
-    if(key == 0.5) {
+    if (key == 0.5) {
       this.score = Number(this.score) + Number(key);
     } else {
       this.score = key;
@@ -39,6 +40,6 @@ export class KeypadComponent implements OnInit {
   }
 
   submit(): void {
-    
+
   }
 }

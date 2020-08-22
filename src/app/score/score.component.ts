@@ -12,13 +12,14 @@ import { JudgeModel } from '../core/models/judge-model';
 })
 export class ScoreComponent implements OnInit {
 
-  judgeId: Number;
+  judgeId: number;
   judge: JudgeModel;
 
   constructor(
     private route: ActivatedRoute,
     private judgeService: JudgeService,
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
     this.judgeId = Number(this.route.snapshot.paramMap.get('id'));

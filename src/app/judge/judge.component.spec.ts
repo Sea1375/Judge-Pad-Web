@@ -8,9 +8,9 @@ describe('JudgeComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ JudgeComponent ]
+      declarations: [JudgeComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

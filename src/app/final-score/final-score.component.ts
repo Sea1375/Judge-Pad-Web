@@ -9,7 +9,8 @@ export class FinalScoreComponent implements OnInit {
 
   state: Boolean;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit(): void {
     this.state = false;

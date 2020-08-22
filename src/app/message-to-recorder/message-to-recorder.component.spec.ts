@@ -8,9 +8,9 @@ describe('MessageToRecorderComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MessageToRecorderComponent ]
+      declarations: [MessageToRecorderComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {

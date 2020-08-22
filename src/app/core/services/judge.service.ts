@@ -9,14 +9,15 @@ import { JUDGES } from '../mock/mock-judges';
 })
 export class JudgeService {
 
-  constructor() { }
+  constructor() {
+  }
 
   getJudge(judgeId: Number): Observable<JudgeModel> {
     return of(JUDGES.find(judge => judge.id === judgeId));
   }
-  
+
   getJudges(): Observable<JudgeModel[]> {
     return of(JUDGES);
   }
-  
+
 }

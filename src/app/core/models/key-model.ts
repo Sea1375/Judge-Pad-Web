@@ -1,5 +1,5 @@
 export interface KeyModel {
-    id: number,
-    key: number,
-    keyString: String,
+  id: number,
+  key: number,
+  keyString: String,
 }

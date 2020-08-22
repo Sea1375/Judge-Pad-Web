@@ -16,8 +16,9 @@ export class JudgeComponent implements OnInit {
 
   constructor(
     private judgeService: JudgeService
-  ) { }
-  
+  ) {
+  }
+
   ngOnInit(): void {
     this.getJudges();
   }

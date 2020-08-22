@@ -8,9 +8,9 @@ describe('GoBackComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ GoBackComponent ]
+      declarations: [GoBackComponent]
     })
-    .compileComponents();
+      .compileComponents();
   }));
 
   beforeEach(() => {
