@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { KeyService } from '../../core/services/key.service';
 import { KeyModel } from '../../core/models/key-model';
+import { KEYS } from '../../core/mock/mock-keys';
 
 @Component({
   selector: 'app-keypad',
@@ -10,29 +10,18 @@ import { KeyModel } from '../../core/models/key-model';
 })
 export class KeypadComponent implements OnInit {
 
-  keys: KeyModel[];
-  score: Number;
+  keys: KeyModel[] = KEYS;
+  score = 0;
 
   constructor(
-    private keyService: KeyService,
   ) {
   }
 
   ngOnInit(): void {
-    this.getKeys();
-    this.score = 0;
   }
 
-  getKeys(): void {
-    this.keyService.getKeys().subscribe(keys => this.keys = keys);
-  }
-
-  addKey(key: Number): void {
-    if (key == 0.5) {
-      this.score = Number(this.score) + Number(key);
-    } else {
-      this.score = key;
-    }
+  setScore(score: number): void {
+    this.score = score === 0.5 ? this.score + score : score;
   }
 
   clear(): void {
@@ -40,6 +29,6 @@ export class KeypadComponent implements OnInit {
   }
 
   submit(): void {
-
+    // TODO: send score to backend
   }
 }

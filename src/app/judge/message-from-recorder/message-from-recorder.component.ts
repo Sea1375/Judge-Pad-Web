@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MessageFromRecorderComponent implements OnInit {
 
-  rmessage: String;
+  message: string;
 
   constructor() {
   }

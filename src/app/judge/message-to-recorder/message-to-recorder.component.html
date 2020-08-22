@@ -3,7 +3,8 @@
     <div class="text-center p-1 text-black-50">
       <h3>Send message to recorder</h3>
     </div>
-    <input class="form-control mt-2" type="text" value="{{ message }}">
+    <label for="message"></label>
+    <input id="message" class="form-control mt-2" type="text" value="{{ message }}">
     <div class="row mt-3 text-center">
       <div class="col-6">
         <button (click)="clear()" class="btn btn-warning" type="button">Clear message</button>

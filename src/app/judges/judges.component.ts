@@ -28,7 +28,7 @@ export class JudgesComponent implements OnInit {
     try {
       this.isLoading = true;
       this.judges = await this.judgeService.getJudges()
-        /*.pipe(delay(3000))*/
+        .pipe(delay(3000))
         .toPromise();
     } catch (e) {
       console.log(e);

@@ -7,13 +7,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FinalScoreComponent implements OnInit {
 
-  state: Boolean;
+  state = false;
 
   constructor() {
   }
 
   ngOnInit(): void {
-    this.state = false;
   }
 
 }
