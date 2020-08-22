@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { KeyService } from '../core/services/key.service';
-import { KeyModel } from '../core/models/key-model';
+import { KeyService } from '../../core/services/key.service';
+import { KeyModel } from '../../core/models/key-model';
 
 @Component({
   selector: 'app-keypad',
