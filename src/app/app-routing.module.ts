@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { JudgeComponent } from './judge/judge.component';
 import { ScoreComponent } from './score/score.component';
 import { RecorderComponent } from './recorder/recorder.component';

@@ -16,7 +16,7 @@ export class KeyService {
     return of(KEYS);
   }
 
-  getKey(keyId: Number): Observable<KeyModel> {
+  getKey(keyId: number): Observable<KeyModel> {
     return of(KEYS.find(key => key.id === keyId));
   }
 

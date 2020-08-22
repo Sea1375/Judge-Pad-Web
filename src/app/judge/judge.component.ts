@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { delay } from 'rxjs/operators';
 
 import { JudgeService } from '../core/services/judge.service';
 import { JudgeModel } from '../core/models/judge-model';
-
 
 @Component({
   selector: 'app-judge',
@@ -12,7 +12,8 @@ import { JudgeModel } from '../core/models/judge-model';
 
 export class JudgeComponent implements OnInit {
 
-  judges: JudgeModel[];
+  isLoading = false;
+  judges: JudgeModel[] = [];
 
   constructor(
     private judgeService: JudgeService
@@ -23,7 +24,16 @@ export class JudgeComponent implements OnInit {
     this.getJudges();
   }
 
-  getJudges(): void {
-    this.judgeService.getJudges().subscribe(judges => this.judges = judges);
+  async getJudges(): Promise<any> {
+    try {
+      this.isLoading = true;
+      this.judges = await this.judgeService.getJudges()
+        /*.pipe(delay(3000))*/
+        .toPromise();
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

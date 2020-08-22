@@ -1,4 +1,4 @@
 export interface JudgeModel {
-  id: number,
-  name: String,
+  id: number;
+  name: string;
 }
