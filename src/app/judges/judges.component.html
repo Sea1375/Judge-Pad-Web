@@ -8,7 +8,7 @@
       <input id="password" type="password" class="form-control password" placeholder="Enter your password"/>
     </div>
     <div class="list-group m-1">
-      <a *ngFor="let judge of judges" class="list-group-item list-group-item-action" routerLink="/score/{{ judge.id }}">{{ judge.name }}</a>
+      <a *ngFor="let judge of judges" class="list-group-item list-group-item-action" routerLink="/judge/{{ judge.id }}">{{ judge.name }}</a>
       <p class="mt-3 text-center" *ngIf="isLoading">Loading judges...</p>
     </div>
   </div>

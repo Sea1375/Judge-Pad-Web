@@ -1,0 +1,14 @@
+<div class="container">
+  <p class="mt-3 text-center" *ngIf="isLoading">Loading Judge information...</p>
+
+  <ng-container *ngIf="judge">
+    <h1 class="bg-success text-white p-1 text-center mt-2">{{ judge.name }}</h1>
+    <app-keypad></app-keypad>
+    <app-message-to-recorder></app-message-to-recorder>
+    <app-message-from-recorder></app-message-from-recorder>
+    <app-final-score></app-final-score>
+    <div class="m-3 text-center">
+      <button type="button" class="btn btn-info" routerLink="/judges">Go back</button>
+    </div>
+  </ng-container>
+</div>

@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { JudgesComponent } from './judges/judges.component';
 import { RecorderComponent } from './recorder/recorder.component';
-import { ScoreComponent } from './score/score.component';
+import { JudgeComponent } from './judge/judge.component';
 import { KeypadComponent } from './keypad/keypad.component';
 import { MessageToRecorderComponent } from './message-to-recorder/message-to-recorder.component';
 import { MessageFromRecorderComponent } from './message-from-recorder/message-from-recorder.component';
@@ -17,7 +17,7 @@ import { GoBackComponent } from './go-back/go-back.component';
     AppComponent,
     JudgesComponent,
     RecorderComponent,
-    ScoreComponent,
+    JudgeComponent,
     KeypadComponent,
     MessageToRecorderComponent,
     MessageFromRecorderComponent,
