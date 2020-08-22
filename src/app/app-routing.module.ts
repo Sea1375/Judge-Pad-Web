@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { JudgeComponent } from './judge/judge.component';
+import { JudgesComponent } from './judges/judges.component';
 import { ScoreComponent } from './score/score.component';
 import { RecorderComponent } from './recorder/recorder.component';
 
 const routes: Routes = [
-  {path: 'judge', component: JudgeComponent},
+  {path: 'judge', component: JudgesComponent},
   {path: 'score/:id', component: ScoreComponent},
   {path: 'recorder', component: RecorderComponent},
-  {path: '', redirectTo: '/judge', pathMatch: 'full'},
+  {path: '', redirectTo: '/judges', pathMatch: 'full'},
 ];
 
 @NgModule({

@@ -6,11 +6,11 @@ import { JudgeModel } from '../core/models/judge-model';
 
 @Component({
   selector: 'app-judge',
-  templateUrl: './judge.component.html',
-  styleUrls: ['./judge.component.scss']
+  templateUrl: './judges.component.html',
+  styleUrls: ['./judges.component.scss']
 })
 
-export class JudgeComponent implements OnInit {
+export class JudgesComponent implements OnInit {
 
   isLoading = false;
   judges: JudgeModel[] = [];

@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { JudgeComponent } from './judge/judge.component';
+import { JudgesComponent } from './judges/judges.component';
 import { RecorderComponent } from './recorder/recorder.component';
 import { ScoreComponent } from './score/score.component';
 import { KeypadComponent } from './keypad/keypad.component';
@@ -15,7 +15,7 @@ import { GoBackComponent } from './go-back/go-back.component';
 @NgModule({
   declarations: [
     AppComponent,
-    JudgeComponent,
+    JudgesComponent,
     RecorderComponent,
     ScoreComponent,
     KeypadComponent,
