@@ -11,6 +11,7 @@ import { MessageToRecorderComponent } from './judge/message-to-recorder/message-
 import { MessageFromRecorderComponent } from './judge/message-from-recorder/message-from-recorder.component';
 import { FinalScoreComponent } from './judge/final-score/final-score.component';
 import { GoBackComponent } from './go-back/go-back.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { GoBackComponent } from './go-back/go-back.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

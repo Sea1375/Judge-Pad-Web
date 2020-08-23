@@ -3,7 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { delay } from 'rxjs/operators';
 
 import { JudgeService } from '../core/services/judge.service';
-import { JudgeModel } from '../core/models/judge-model'
+import { JudgeModel } from '../core/models/judge-model';
 
 @Component({
   selector: 'app-judge',
@@ -29,13 +29,13 @@ export class JudgeComponent implements OnInit {
   async getJudge(): Promise<any> {
     try {
       this.isLoading = true;
-      this.judge = await this.judgeService.getJudge(this.judgeId).pipe(delay(3000)).toPromise();
+      this.judge = await this.judgeService.getJudge(this.judgeId)
+        // .pipe(delay(3000))
+        .toPromise();
     } catch (e) {
       console.log(e);
     } finally {
       this.isLoading = false;
     }
   }
-
-
 }

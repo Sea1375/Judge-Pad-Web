@@ -3,6 +3,7 @@ import { delay } from 'rxjs/operators';
 
 import { JudgeService } from '../core/services/judge.service';
 import { JudgeModel } from '../core/models/judge-model';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-judge',
@@ -16,7 +17,8 @@ export class JudgesComponent implements OnInit {
   judges: JudgeModel[] = [];
 
   constructor(
-    private judgeService: JudgeService
+    private judgeService: JudgeService,
+    private http: HttpClient
   ) {
   }
 
@@ -28,12 +30,25 @@ export class JudgesComponent implements OnInit {
     try {
       this.isLoading = true;
       this.judges = await this.judgeService.getJudges()
-        .pipe(delay(3000))
+        // .pipe(delay(3000))
         .toPromise();
     } catch (e) {
       console.log(e);
     } finally {
       this.isLoading = false;
+    }
+  }
+
+  checkValid(): void {
+    try {
+      this.http.post('http://localhost:3000/api/auth/valid/2', { judge_email: 'judge3@judge.com', judge_password: 'judge2' })
+        .subscribe((data) => {
+        console.log(data);
+      });
+
+    } catch (e) {
+      console.log(e);
+    } finally {
     }
   }
 }
