@@ -1,4 +1,7 @@
 export interface JudgeModel {
-  id: number;
-  name: string;
+  judge_id: number;
+  judge_name: string;
+  judge_email: string;
+  judge_password: string;
+  judge_available: boolean;
 }

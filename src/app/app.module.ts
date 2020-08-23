@@ -12,6 +12,8 @@ import { MessageFromRecorderComponent } from './judge/message-from-recorder/mess
 import { FinalScoreComponent } from './judge/final-score/final-score.component';
 import { GoBackComponent } from './go-back/go-back.component';
 import { HttpClientModule } from '@angular/common/http';
+import { GiveAuthToJudgeComponent } from './recorder/give-auth-to-judge/give-auth-to-judge.component';
+import { CommunicateWithJudgeComponent } from './recorder/communicate-with-judge/communicate-with-judge.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { HttpClientModule } from '@angular/common/http';
     MessageToRecorderComponent,
     MessageFromRecorderComponent,
     FinalScoreComponent,
-    GoBackComponent
+    GoBackComponent,
+    GiveAuthToJudgeComponent,
+    CommunicateWithJudgeComponent,
   ],
   imports: [
     BrowserModule,

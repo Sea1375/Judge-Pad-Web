@@ -13,7 +13,7 @@ export class JudgeService {
   }
 
   getJudge(judgeId: number): Observable<JudgeModel> {
-    return of(JUDGES.find(judge => judge.id === judgeId));
+    return of(JUDGES.find(judge => judge.judge_id === judgeId));
   }
 
   getJudges(): Observable<JudgeModel[]> {

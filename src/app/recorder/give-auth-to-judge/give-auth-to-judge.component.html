@@ -1,0 +1,27 @@
+<div class="card">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+  <div class="card-body">
+      <div id="table" class="table-editable">
+        <table class="table table-bordered table-responsive-md table-striped text-center">
+          <tr>
+            <th class="text-center">Dive number</th>
+            <th class="text-center">Email</th>
+            <th class="text-center">Password</th>
+            <th class="text-center">Available</th>
+          </tr>
+          <tr *ngFor="let judge of judges; let id = index">
+            <td>
+              <span contenteditable="false">{{judge.judge_name}}</span>
+            </td>
+            <td>
+              <span contenteditable="true" (keyup)="changeValue(id, 'judge_email', $event)" (blur)="updateList(id, 'judge_email', judge, $event)">{{judge.judge_email}}</span>
+            </td>
+            <td>
+              <span contenteditable="true" (keyup)="changeValue(id, 'judge_password', $event)" (blur)="updateList(id, 'judge_password', judge, $event)">{{judge.judge_password}}</span>
+            </td>
+          </tr>
+        </table>
+      </div>
+  </div>
+</div>
+<!-- Editable table -->
