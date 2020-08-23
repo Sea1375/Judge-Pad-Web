@@ -1,0 +1,23 @@
+@media all and (min-width: 768px) {
+  tr  {
+    td {
+      vertical-align: middle !important;
+    }
+    span {
+      &:not([class]) {
+        padding: 1rem 1rem;
+      }
+    }
+  }
+}
+button{
+//  background-color: cadetblue;
+  border-radius: 15px;
+  color: white;
+}
+.btn-default {
+  background-color: cadetblue;
+}
+.btn-change {
+  background-color: orangered;
+}

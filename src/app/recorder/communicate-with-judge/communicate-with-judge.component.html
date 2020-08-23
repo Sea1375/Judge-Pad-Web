@@ -1,1 +1,43 @@
-<p>communicate-with-judge works!</p>
+<div class="card mt-3">
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Score Pad</h3>
+  <div class="card-body">
+    <div id="table" class="table-editable">
+      <table class="table table-bordered table-responsive-md table-striped text-center">
+        <tr>
+          <th class="text-center">Dive Number</th>
+          <th class="text-center">Score</th>
+          <th class="text-center">Message from Judge</th>
+          <th class="text-center">Message to Judge</th>
+          <th class="text-center">action</th>
+        </tr>
+        <ng-container *ngIf="judges">
+          <tr *ngFor="let judge of judges; let btnStyle of bntStyle; let id = index">
+            <td>
+              <span contenteditable="false">{{judge.judge_name}}</span>
+            </td>
+            <td>
+              <span contenteditable="false">{{judge.judge_score}}</span>
+            </td>
+            <td>
+              <span contenteditable="false">{{judge.message_from_judge}}</span>
+            </td>
+            <td>
+              <span contenteditable="true" (keyup)="changeValue(id, 'message_to_judge', $event)">{{judge.message_to_judge}}</span>
+            </td>
+            <td>
+              <span class="table-remove">
+                <button type="button" [ngClass]="[btnStyle.color]" (click)="send(id)">Send</button>
+              </span>
+            </td>
+          </tr>
+        </ng-container>
+        <ng-container *ngIf="!judges">
+          <tr>
+            <td rowspan="5">There are not exist</td>
+          </tr>
+        </ng-container>
+      </table>
+    </div>
+  </div>
+</div>
+<!-- Editable table -->

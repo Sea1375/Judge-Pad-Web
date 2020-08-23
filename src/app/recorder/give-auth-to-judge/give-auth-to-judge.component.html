@@ -1,5 +1,5 @@
 <div class="card">
-  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Editable table</h3>
+  <h3 class="card-header text-center font-weight-bold text-uppercase py-4">Who are available?</h3>
   <div class="card-body">
       <div id="table" class="table-editable">
         <table class="table table-bordered table-responsive-md table-striped text-center">
@@ -9,17 +9,30 @@
             <th class="text-center">Password</th>
             <th class="text-center">Available</th>
           </tr>
-          <tr *ngFor="let judge of judges; let id = index">
-            <td>
-              <span contenteditable="false">{{judge.judge_name}}</span>
-            </td>
-            <td>
-              <span contenteditable="true" (keyup)="changeValue(id, 'judge_email', $event)" (blur)="updateList(id, 'judge_email', judge, $event)">{{judge.judge_email}}</span>
-            </td>
-            <td>
-              <span contenteditable="true" (keyup)="changeValue(id, 'judge_password', $event)" (blur)="updateList(id, 'judge_password', judge, $event)">{{judge.judge_password}}</span>
-            </td>
-          </tr>
+          <ng-container *ngIf="judges">
+            <tr *ngFor="let judge of judges; let id = index">
+              <td>
+                <span contenteditable="false">{{judge.judge_name}}</span>
+              </td>
+              <td>
+                <span contenteditable="true" (keyup)="changeValue(id, 'judge_email', $event)" (blur)="updateList(id, 'judge_email', judge, $event)">{{judge.judge_email}}</span>
+              </td>
+              <td>
+                <span contenteditable="true" (keyup)="changeValue(id, 'judge_password', $event)" (blur)="updateList(id, 'judge_password', judge, $event)">{{judge.judge_password}}</span>
+              </td>
+              <td>
+                <label for="available"></label>
+                <input type="checkbox" id="available" [formControl]="available" (change)="changeCheckbox(id)" [checked]="judge.judge_available">
+              </td>
+            </tr>
+          </ng-container>
+          <ng-container *ngIf="!judges">
+            <tr>
+              <td rowspan="4">
+                There are not exist.
+              </td>
+            </tr>
+          </ng-container>
         </table>
       </div>
   </div>

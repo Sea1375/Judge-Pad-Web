@@ -14,6 +14,7 @@ import { GoBackComponent } from './go-back/go-back.component';
 import { HttpClientModule } from '@angular/common/http';
 import { GiveAuthToJudgeComponent } from './recorder/give-auth-to-judge/give-auth-to-judge.component';
 import { CommunicateWithJudgeComponent } from './recorder/communicate-with-judge/communicate-with-judge.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -33,6 +34,8 @@ import { CommunicateWithJudgeComponent } from './recorder/communicate-with-judge
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
