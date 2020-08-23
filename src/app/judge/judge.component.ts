@@ -29,9 +29,7 @@ export class JudgeComponent implements OnInit {
   async getJudge(): Promise<any> {
     try {
       this.isLoading = true;
-      this.judge = await this.judgeService.getJudge(this.judgeId)
-        // .pipe(delay(3000))
-        .toPromise();
+      this.judge = await this.judgeService.getJudge(this.judgeId).toPromise();
     } catch (e) {
       console.log(e);
     } finally {

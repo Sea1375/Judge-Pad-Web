@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 import { KeyModel } from '../../core/models/key-model';
 import { KEYS } from '../../core/mock/mock-keys';
+import { JudgeService } from '../../core/services/judge.service';
+import { JudgeModel } from '../../core/models/judge-model';
 
 @Component({
   selector: 'app-keypad',
@@ -10,25 +12,39 @@ import { KEYS } from '../../core/mock/mock-keys';
 })
 export class KeypadComponent implements OnInit {
 
+  @Input() judgeId: number;
+
+  isLoading = false;
   keys: KeyModel[] = KEYS;
-  score = 0;
+  currentScore = 0;
 
   constructor(
+    private judgeService: JudgeService
   ) {
   }
 
   ngOnInit(): void {
   }
 
-  setScore(score: number): void {
-    this.score = score === 0.5 ? this.score + score : score;
+  setScore(key: number): void {
+    this.currentScore = key === 0.5 ? this.currentScore + key : key;
   }
 
   clear(): void {
-    this.score = 0;
+    this.currentScore = 0;
   }
 
-  submit(): void {
-    // TODO: send score to backend
+  async send(): Promise<any> {
+    try {
+      this.isLoading = true;
+      const data = {
+        judge_score: this.currentScore
+      };
+      this.judgeService.setDataFromJudge(this.judgeId, data);
+    } catch (e) {
+      console.log(e);
+    } finally {
+      this.isLoading = false;
+    }
   }
 }

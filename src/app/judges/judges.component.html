@@ -23,7 +23,7 @@
       </div>
     </div>
     <div class="list-group m-1">
-      <a *ngFor="let judge of judges" class="list-group-item list-group-item-action" routerLink="/judge/{{ judge.id }}" (click)="checkValid()">{{ judge.name }}</a>
+      <a *ngFor="let judge of judges; let id = index" class="list-group-item list-group-item-action" routerLink="/judge/{{ judge.judge_id }}" (click)="checkValid(id, judge)">{{ judge.judge_name }}</a>
       <p class="mt-3 text-center" *ngIf="isLoading">Loading judges...</p>
     </div>
   </div>

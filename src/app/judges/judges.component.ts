@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { delay } from 'rxjs/operators';
+import { HttpClient } from '@angular/common/http';
 
 import { JudgeService } from '../core/services/judge.service';
 import { JudgeModel } from '../core/models/judge-model';
-import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-judge',
@@ -14,7 +14,8 @@ import { HttpClient } from '@angular/common/http';
 export class JudgesComponent implements OnInit {
 
   isLoading = false;
-  judges: JudgeModel[] = [];
+  judges: object = [];
+  isVaild: boolean;
 
   constructor(
     private judgeService: JudgeService,
@@ -29,9 +30,8 @@ export class JudgesComponent implements OnInit {
   async getJudges(): Promise<any> {
     try {
       this.isLoading = true;
-      this.judges = await this.judgeService.getJudges()
-        // .pipe(delay(3000))
-        .toPromise();
+      this.judgeService.getJudges().subscribe(judges => this.judges = judges);
+      console.log(this.judges);
     } catch (e) {
       console.log(e);
     } finally {
@@ -39,13 +39,10 @@ export class JudgesComponent implements OnInit {
     }
   }
 
-  checkValid(): void {
+  async checkValid(judgeId: number, judge: JudgeModel): Promise<any> {
     try {
-      this.http.post('http://localhost:3000/api/auth/valid/2', { judge_email: 'judge3@judge.com', judge_password: 'judge2' })
-        .subscribe((data) => {
-        console.log(data);
-      });
-
+      const result = await this.judgeService.checkValid(judgeId, judge).toPromise();
+      this.isVaild = result['isValid'];
     } catch (e) {
       console.log(e);
     } finally {

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+
 import { ColorModel } from '../../core/models/color-model';
+import { JudgeService } from '../../core/services/judge.service';
 
 @Component({
   selector: 'app-communicate-with-judge',
@@ -10,16 +12,17 @@ import { ColorModel } from '../../core/models/color-model';
 export class CommunicateWithJudgeComponent implements OnInit {
 
   isLoading = false;
-  baseUrl = 'http://localhost:3001/api/score';
   judges: object = [];
+  scores: object = [];
   bntStyle: ColorModel[];
 
   constructor(
-    private http: HttpClient
+    private http: HttpClient,
+    private judgeService: JudgeService
   ) { }
 
   ngOnInit(): void {
-    this.getJudges();
+    this.getScores();
     this.bntStyle = [
       {color: 'btn-default'},
       {color: 'btn-default'},
@@ -36,15 +39,10 @@ export class CommunicateWithJudgeComponent implements OnInit {
     ];
   }
 
-  async getJudges(): Promise<any> {
+  async getScores(): Promise<any> {
     try {
       this.isLoading = true;
-      const url = this.baseUrl.concat('/all'.toString());
-      await this.http.get(url)
-        .subscribe((data) => {
-          this.judges = data;
-          console.log(data);
-        });
+      this.scores = await this.judgeService.getScores().toPromise();
     } catch (e) {
       console.log(e);
     } finally {
@@ -54,18 +52,12 @@ export class CommunicateWithJudgeComponent implements OnInit {
 
   changeValue(id: number, property: string, event: any): void {
     this.judges[id][property] = event.target.textContent;
-
   }
 
   async send(id: number): Promise<any> {
     try {
       this.isLoading = true;
-      let url = this.baseUrl.concat('/recorder/'.toString());
-      url = url.concat(String(id + 1).toString());
-      await this.http.post(url, this.judges[id])
-        .subscribe((data) => {
-          console.log(data);
-        });
+      this.judgeService.setMessageToJudge(id, this.scores[id]);
     } catch (e) {
       console.log(e);
     } finally {
