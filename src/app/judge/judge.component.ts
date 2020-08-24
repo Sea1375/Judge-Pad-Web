@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { delay } from 'rxjs/operators';
 
 import { JudgeService } from '../core/services/judge.service';
 import { JudgeModel } from '../core/models/judge-model';

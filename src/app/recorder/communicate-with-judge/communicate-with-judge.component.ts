@@ -11,15 +11,18 @@ import { JudgeService } from '../../core/services/judge.service';
 })
 export class CommunicateWithJudgeComponent implements OnInit {
 
-  isLoading = false;
-  judges: object = [];
-  scores: object = [];
-  bntStyle: ColorModel[];
-
   constructor(
     private http: HttpClient,
     private judgeService: JudgeService
   ) { }
+
+  isLoading = false;
+  scores: object = [];
+  bntStyle: ColorModel[];
+
+  private autoSaveInterval: number = setInterval( () => {
+    console.log('123');
+  }, 5000);
 
   ngOnInit(): void {
     this.getScores();
@@ -51,7 +54,7 @@ export class CommunicateWithJudgeComponent implements OnInit {
   }
 
   changeValue(id: number, property: string, event: any): void {
-    this.judges[id][property] = event.target.textContent;
+    this.scores[id][property] = event.target.textContent;
   }
 
   async send(id: number): Promise<any> {
@@ -64,4 +67,5 @@ export class CommunicateWithJudgeComponent implements OnInit {
       this.isLoading = false;
     }
   }
+
 }

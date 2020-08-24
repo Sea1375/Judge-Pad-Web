@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 import { JudgeService } from '../core/services/judge.service';
 import { JudgeModel } from '../core/models/judge-model';
-
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-judge',
@@ -14,12 +14,18 @@ import { JudgeModel } from '../core/models/judge-model';
 export class JudgesComponent implements OnInit {
 
   isLoading = false;
-  judges: object = [];
-  isVaild: boolean;
+  judges: JudgeModel[] = [];
+  selectedJudge: JudgeModel;
+
+  form: FormGroup = this.fb.group({
+    email: ['', [Validators.required, Validators.email]],
+    password: ['', Validators.required]
+  });
 
   constructor(
     private judgeService: JudgeService,
-    private http: HttpClient
+    private fb: FormBuilder,
+    private router: Router
   ) {
   }
 
@@ -30,8 +36,7 @@ export class JudgesComponent implements OnInit {
   async getJudges(): Promise<any> {
     try {
       this.isLoading = true;
-      this.judgeService.getJudges().subscribe(judges => this.judges = judges);
-      console.log(this.judges);
+      this.judges = await this.judgeService.getJudges().toPromise();
     } catch (e) {
       console.log(e);
     } finally {
@@ -39,13 +44,12 @@ export class JudgesComponent implements OnInit {
     }
   }
 
-  async checkValid(judgeId: number, judge: JudgeModel): Promise<any> {
-    try {
-      const result = await this.judgeService.checkValid(judgeId, judge).toPromise();
-      this.isVaild = result['isValid'];
-    } catch (e) {
-      console.log(e);
-    } finally {
+  login(): void {
+    const value = this.form.value;
+    if (this.selectedJudge.judge_email === value.email && this.selectedJudge.judge_password === value.password) {
+      this.router.navigate(['judge', this.selectedJudge.judge_id]);
+    } else {
+      alert('Invalid password or email!');
     }
   }
 }

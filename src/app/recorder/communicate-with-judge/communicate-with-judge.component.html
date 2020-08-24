@@ -10,19 +10,19 @@
           <th class="text-center">Message to Judge</th>
           <th class="text-center">action</th>
         </tr>
-        <ng-container *ngIf="judges">
-          <tr *ngFor="let judge of judges; let btnStyle of bntStyle; let id = index">
+        <ng-container *ngIf="scores">
+          <tr *ngFor="let score of scores; let btnStyle of bntStyle; let id = index">
             <td>
-              <span contenteditable="false">{{judge.judge_name}}</span>
+              <span contenteditable="false">{{score.judge_name}}</span>
             </td>
             <td>
-              <span contenteditable="false">{{judge.judge_score}}</span>
+              <span contenteditable="false">{{score.judge_score}}</span>
             </td>
             <td>
-              <span contenteditable="false">{{judge.message_from_judge}}</span>
+              <span contenteditable="false">{{score.message_from_judge}}</span>
             </td>
             <td>
-              <span contenteditable="true" (keyup)="changeValue(id, 'message_to_judge', $event)">{{judge.message_to_judge}}</span>
+              <!--<span contenteditable="true" (keyup)="changeValue(id, 'message_to_judge', $event)">{{judge.message_to_judge}}</span>-->
             </td>
             <td>
               <span class="table-remove">
@@ -31,7 +31,7 @@
             </td>
           </tr>
         </ng-container>
-        <ng-container *ngIf="!judges">
+        <ng-container *ngIf="!scores">
           <tr>
             <td rowspan="5">There are not exist</td>
           </tr>

@@ -28,6 +28,7 @@ export class GiveAuthToJudgeComponent implements OnInit {
     try {
       this.isLoading = true;
       this.judges = await this.judgeService.getJudges().toPromise();
+      console.log(this.judges);
     } catch (e) {
       console.log(e);
     } finally {

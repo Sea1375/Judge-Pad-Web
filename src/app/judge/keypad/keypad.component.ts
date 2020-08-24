@@ -37,10 +37,7 @@ export class KeypadComponent implements OnInit {
   async send(): Promise<any> {
     try {
       this.isLoading = true;
-      const data = {
-        judge_score: this.currentScore
-      };
-      this.judgeService.setDataFromJudge(this.judgeId, data);
+      this.judgeService.setDataFromJudge(this.judgeId, {judge_score: this.currentScore});
     } catch (e) {
       console.log(e);
     } finally {

@@ -3,36 +3,29 @@ import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
 import { JudgeModel } from '../models/judge-model';
+import { environment } from '../../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class JudgeService {
 
-  judges: object = [];
   scores: object = [];
   score: object;
   isValid: object;
 
   constructor(
     private http: HttpClient
-  ) {
-    http.get('http://localhost:3001/api/auth/all').subscribe((data) => {
-      this.judges = data;
-    });
-  }
+  ) {}
 
-  getJudges(): Observable<any> {
-    this.http.get('http://localhost:3001/api/auth/all').subscribe((data) => {
-      this.judges = data;
-      console.log('first', this.judges);
-    });
-    console.log('second', this.judges);
-    return of(this.judges);
+  getJudges(): Observable<JudgeModel[]> {
+    return this.http.get<JudgeModel[]>(`${environment.api}/auth/all`);
   }
 
   getJudge(judgeId: number): Observable<JudgeModel> {
-    return of(this.judges[judgeId]);
+    let url = `${environment.api}/auth/`;
+    url = url.concat(String(judgeId).toString());
+    return this.http.get<JudgeModel>(url);
   }
 
   checkValid(judgeId: number, judge: JudgeModel): Observable<any> {
@@ -83,8 +76,9 @@ export class JudgeService {
   }
 
   setDataFromJudge(judgeId: number, score: object): Observable<any> {
-    let url = 'http://localhost:3001/api/score/judge/';
+    let url = `${environment.api}/auth/`;
     url = url.concat(String(judgeId).toString());
+    return this.http.post(`${environment.api}/auth/all`);
     this.http.post(url, score)
       .subscribe((data) => {
         console.log(data);

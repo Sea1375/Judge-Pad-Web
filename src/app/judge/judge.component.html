@@ -3,10 +3,10 @@
 
   <ng-container *ngIf="judge">
     <h1 class="bg-success text-white p-1 text-center mt-2">{{ judge.judge_name }}</h1>
+    <app-final-score></app-final-score>
     <app-keypad [judgeId]="judgeId"></app-keypad>
     <app-message-to-recorder [judgeId]="judgeId"></app-message-to-recorder>
     <app-message-from-recorder [judgeId]="judgeId"></app-message-from-recorder>
-    <app-final-score></app-final-score>
     <div class="m-3 text-center">
       <button type="button" class="btn btn-info" routerLink="/judges">Go back</button>
     </div>

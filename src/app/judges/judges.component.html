@@ -1,29 +1,33 @@
 <div class="container">
   <div class="mt-5">
-    <h1 class="bg-success text-white p-1 text-center">Welcome to Judge Pad</h1>
+    <h1 class="bg-success text-white p-1 text-center" style="position: relative;">
+      Welcome to Judge Pad
+      <a routerLink="/recorder"><i class="fas fa-user-edit" style="font-size:36px;color: orange; position: absolute; right: 20px; top: 10px;"></i></a>
+    </h1>
+
   </div>
   <div class="card bg-light text-dark">
-    <div class="card-body text-center">
-      <h2 class="text-black-50" for="password">Which judge are you?</h2>
-      <div class="row">
-        <div class="col-sm-2">
-          <label for="email">Email: </label>
+    <div class="card-body text-center" *ngIf="selectedJudge">
+      <h2 class="text-black-50">Please enter email and password</h2>
+      <p>Selected Judge: {{ selectedJudge.judge_name }}</p>
+      <form class="text-left" [formGroup]="form" (ngSubmit)="login()">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input id="email" type="email" class="form-control" formControlName="email">
         </div>
-        <div class="col-sm-8">
-          <input id="email" type="email" class="form-control email mb-3" placeholder="Enter your email"/>
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input id="password" type="password" class="form-control" formControlName="password">
         </div>
-      </div>
-      <div class="row">
-        <div class="col-sm-2">
-          <label for="password">Password: </label>
+        <div class="d-flex justify-content-center">
+          <button class="btn btn-primary" [disabled]="form.invalid">Login</button>
         </div>
-        <div class="col-sm-8">
-          <input id="password" type="password" class="form-control password" placeholder="Enter your password"/>
-        </div>
-      </div>
+      </form>
     </div>
     <div class="list-group m-1">
-      <a *ngFor="let judge of judges; let id = index" class="list-group-item list-group-item-action" routerLink="/judge/{{ judge.judge_id }}" (click)="checkValid(id, judge)">{{ judge.judge_name }}</a>
+      <a *ngFor="let judge of judges; let id = index" class="list-group-item list-group-item-action"
+         [class.active]="selectedJudge?.judge_id === judge.judge_id"
+         (click)="selectedJudge = judge">{{ judge.judge_name }}</a>
       <p class="mt-3 text-center" *ngIf="isLoading">Loading judges...</p>
     </div>
   </div>
